@@ -21,22 +21,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Version de Node.js adaptée à Next.js (modifie si nécessaire)
+          node-version: "18"
 
+      # Étape 3 : Aller dans le dossier `app`
       - name: Change to app directory
-      working-directory: ./app
+        working-directory: ./app
 
-      # Étape 3 : Installer les dépendances
+      # Étape 4 : Installer les dépendances
       - name: Install dependencies
         run: npm install
         working-directory: ./app
 
-      # Étape 4 : Lancer les tests
+      # Étape 5 : Lancer les tests
       - name: Run tests
         run: npm test
         working-directory: ./app
 
-      # Étape 5 : Construire le projet
+      # Étape 6 : Construire le projet
       - name: Build project
         run: npm run build
         working-directory: ./app
@@ -44,7 +45,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-test
-    if: github.ref == 'refs/heads/main' # Déploie uniquement pour la branche main
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code
@@ -55,9 +56,9 @@ jobs:
         with:
           node-version: "18"
 
-      # Étape 6 : Déploiement sur Vercel
+      # Étape 7 : Déployer depuis le dossier `app`
       - name: Deploy to Vercel
         run: npx vercel --prod
-      working-directory: ./app
+        working-directory: ./app
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
