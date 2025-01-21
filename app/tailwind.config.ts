@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "futur-blue": "#00CEEF",
+        "futur-dark": "#002830",
       },
     },
   },
