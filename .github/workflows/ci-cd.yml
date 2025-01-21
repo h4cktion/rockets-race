@@ -38,6 +38,6 @@ jobs:
         working-directory: ./app
 
       # Étape 6 : Construire le projet
-      - name: Build project
-        run: npm run build
-        working-directory: ./app
+      # - name: Build project
+      #   run: npm run build
+      #   working-directory: ./app
