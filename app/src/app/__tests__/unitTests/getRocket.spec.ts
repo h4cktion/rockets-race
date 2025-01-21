@@ -1,5 +1,5 @@
-import { RocketRepository } from "@/app/adaptors/rocketRepository";
 import { Rocket } from "@/app/domain/rocket";
+import { RocketRepository } from "@/app/interfaces/rocketRepository";
 import { GetRockets } from "@/app/usecases/getRocket";
 
 describe("GetRockets Use Case", () => {

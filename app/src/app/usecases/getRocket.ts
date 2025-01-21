@@ -1,5 +1,5 @@
-import { RocketRepository } from "@/app/adaptors/rocketRepository";
 import { Rocket } from "@/app/domain/rocket";
+import { RocketRepository } from "../interfaces/rocketRepository";
 
 export class GetRockets {
   constructor(private readonly rocketRepository: RocketRepository) {

@@ -1,6 +1,6 @@
 import { gql, ApolloClient } from "@apollo/client";
-import { RocketRepository } from "@/app/adaptors/rocketRepository";
 import { Rocket } from "@/app/domain/rocket";
+import { RocketRepository } from "../interfaces/rocketRepository";
 
 export class ApolloRocketRepository implements RocketRepository {
   private client: ApolloClient<unknown>;
