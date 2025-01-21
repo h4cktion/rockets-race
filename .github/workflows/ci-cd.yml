@@ -41,24 +41,3 @@ jobs:
       - name: Build project
         run: npm run build
         working-directory: ./app
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build-and-test
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-
-      # Étape 7 : Déployer depuis le dossier `app`
-      - name: Deploy to Vercel
-        run: npx vercel --prod --yes
-        working-directory: ./app
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
