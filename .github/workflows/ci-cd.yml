@@ -58,7 +58,7 @@ jobs:
 
       # Étape 7 : Déployer depuis le dossier `app`
       - name: Deploy to Vercel
-        run: npx vercel --prod
+        run: npx vercel --prod --yes
         working-directory: ./app
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
