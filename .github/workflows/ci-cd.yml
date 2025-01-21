@@ -21,11 +21,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "18" # Version de Node.js adaptée à Next.js
 
       # Étape 3 : Aller dans le dossier `app`
       - name: Change to app directory
-        working-directory: ./app
+        run: cd ./app
 
       # Étape 4 : Installer les dépendances
       - name: Install dependencies
