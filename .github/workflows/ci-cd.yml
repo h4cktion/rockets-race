@@ -1,0 +1,63 @@
+name: Next.js CI/CD
+
+on:
+  push:
+    branches:
+      - main # Exécute le workflow pour les pushes sur la branche `main`
+  pull_request:
+    branches:
+      - main # Exécute le workflow pour les pull requests sur `main`
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code source
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Étape 2 : Configurer Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Version de Node.js adaptée à Next.js (modifie si nécessaire)
+
+      - name: Change to app directory
+      working-directory: ./app
+
+      # Étape 3 : Installer les dépendances
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./app
+
+      # Étape 4 : Lancer les tests
+      - name: Run tests
+        run: npm test
+        working-directory: ./app
+
+      # Étape 5 : Construire le projet
+      - name: Build project
+        run: npm run build
+        working-directory: ./app
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' # Déploie uniquement pour la branche main
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Étape 6 : Déploiement sur Vercel
+      - name: Deploy to Vercel
+        run: npx vercel --prod
+      working-directory: ./app
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
