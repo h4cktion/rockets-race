@@ -3,9 +3,9 @@ import { RocketRepository } from "@/app/adaptors/rocketRepository";
 import { Rocket } from "@/app/domain/rocket";
 
 export class ApolloRocketRepository implements RocketRepository {
-  private client: ApolloClient<any>;
+  private client: ApolloClient<unknown>;
 
-  constructor(client: ApolloClient<any>) {
+  constructor(client: ApolloClient<unknown>) {
     this.client = client;
   }
 
