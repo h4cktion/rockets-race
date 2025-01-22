@@ -55,4 +55,33 @@ export class ApolloRocketRepository implements RocketRepository {
 
     return data.startRace;
   }
+
+  async getRace(raceId: string): Promise<Race> {
+    console.log("ICI raceId", raceId);
+    const QUERY = gql`
+      query GetRace($id: ID!) {
+        race(id: $id) {
+          id
+          rocket1 {
+            id
+            progress
+            exploded
+          }
+          rocket2 {
+            id
+            progress
+            exploded
+          }
+          winner
+        }
+      }
+    `;
+
+    const { data } = await this.client.query({
+      query: QUERY,
+      variables: { id: raceId },
+    });
+    console.log("data", data);
+    return data.race;
+  }
 }

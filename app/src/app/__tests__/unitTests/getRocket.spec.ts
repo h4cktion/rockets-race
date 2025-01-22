@@ -9,6 +9,7 @@ describe("GetRockets Use Case", () => {
     mockRocketRepository = {
       getRockets: jest.fn(),
       startRace: jest.fn(),
+      getRace: jest.fn(),
     };
   });
 
