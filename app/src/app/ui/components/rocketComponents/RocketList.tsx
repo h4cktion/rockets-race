@@ -1,11 +1,13 @@
 "use client";
 import { Rocket } from "@/app/domain/rocket";
-import React, { useState } from "react";
+import { useState } from "react";
 import RocketButton from "./RocketButton";
 import RocketDescription from "./RocketDescription";
 import StartButton from "./StartButton";
+import { useRouter } from "next/navigation";
 
 const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
+  const router = useRouter();
   const [selectedRockets, setSelectedRockets] = useState<Rocket[]>([]);
 
   const selectOrDeselectRocket = (rocket: Rocket) => {
@@ -17,6 +19,14 @@ const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
     if (selectedRockets.length < 2 && !selectedRockets.includes(rocket)) {
       setSelectedRockets([...selectedRockets, rocket]);
     }
+  };
+
+  const startTheRace = () => {
+    const queryString = new URLSearchParams({
+      rocketA: selectedRockets[0].id,
+      rocketB: selectedRockets[1].id,
+    }).toString();
+    router.push(`/race?${queryString}`);
   };
 
   return (
@@ -35,7 +45,7 @@ const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
         ))}
       </ul>
       <RocketDescription rockets={selectedRockets} />
-      <StartButton rockets={selectedRockets} />
+      <StartButton rockets={selectedRockets} startTheRace={startTheRace} />
     </div>
   );
 };

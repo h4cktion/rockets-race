@@ -1,6 +1,5 @@
 import { Rocket } from "@/app/domain/rocket";
 import Image from "next/image";
-import React from "react";
 
 const RocketButton = ({
   rocket,

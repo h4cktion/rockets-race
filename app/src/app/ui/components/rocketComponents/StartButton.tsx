@@ -1,9 +1,15 @@
 import { Rocket } from "@/app/domain/rocket";
-import React from "react";
 
-const StartButton = ({ rockets }: { rockets: Rocket[] }) => {
+const StartButton = ({
+  rockets,
+  startTheRace,
+}: {
+  rockets: Rocket[];
+  startTheRace: () => void;
+}) => {
   return (
     <button
+      onClick={startTheRace}
       className={`p-4 w-40 h-40  uppercase 
     text-2xl font-bold rounded-full border-8 
     transition-colors duration-1000 ease-in-out

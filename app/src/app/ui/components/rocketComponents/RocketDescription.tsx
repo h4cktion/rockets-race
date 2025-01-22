@@ -1,5 +1,4 @@
 import { Rocket } from "@/app/domain/rocket";
-import React from "react";
 
 const fillWithPlaceholders = (rockets: Rocket[], count: number): Rocket[] => {
   const filledRockets = [...rockets];
