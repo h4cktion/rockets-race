@@ -1,19 +1,13 @@
+import { startRace } from "@/app/actions/rocket.actions";
 import { useRocketSelection } from "@/app/contexts/rocketContext";
-import { Race } from "@/app/domain/race";
 
-type StartButtonProps = {
-  startTheRace: (
-    rocketId1: string,
-    rocketId2: string
-  ) => Promise<Race | undefined>;
-};
-const StartButton = ({ startTheRace }: StartButtonProps) => {
+const StartButton = () => {
   const { selectedRockets } = useRocketSelection();
   const isDisabled = selectedRockets.length < 2;
 
   return (
     <button
-      onClick={() => startTheRace(selectedRockets[0].id, selectedRockets[1].id)}
+      onClick={() => startRace(selectedRockets[0].id, selectedRockets[1].id)}
       className={`p-4 w-40 h-40  uppercase 
     text-2xl font-bold rounded-full border-8 
     transition-colors duration-1000 ease-in-out
