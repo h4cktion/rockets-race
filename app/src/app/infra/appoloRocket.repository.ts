@@ -24,18 +24,36 @@ export class ApolloRocketRepository implements RocketRepository {
     const { data } = await this.client.query({ query: QUERY });
     return data.rockets;
   }
-  async startRace(): Promise<Race> {
-    const QUERY = gql`
-      query GetRockets {
-        rockets {
+
+  async startRace(rocket1: string, rocket2: string): Promise<Race> {
+    const MUTATION = gql`
+      mutation StartRace($rocket1: ID!, $rocket2: ID!) {
+        startRace(rocket1: $rocket1, rocket2: $rocket2) {
           id
-          name
-          description
-          image
+          rocketA {
+            id
+            name
+          }
+          rocketB {
+            id
+            name
+          }
+          winner {
+            id
+            name
+          }
         }
       }
     `;
-    const { data } = await this.client.query({ query: QUERY });
-    return data.rockets;
+
+    const { data } = await this.client.mutate({
+      mutation: MUTATION,
+      variables: {
+        rocket1,
+        rocket2,
+      },
+    });
+
+    return data.startRace;
   }
 }

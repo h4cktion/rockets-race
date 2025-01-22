@@ -8,6 +8,7 @@ describe("GetRockets Use Case", () => {
   beforeEach(() => {
     mockRocketRepository = {
       getRockets: jest.fn(),
+      startRace: jest.fn(),
     };
   });
 
