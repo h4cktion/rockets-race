@@ -1,18 +1,12 @@
 const Race = async (props: {
   searchParams?: Promise<{
-    rocketA?: string;
-    rocketB?: string;
+    id?: string;
   }>;
 }) => {
   const searchParams = await props.searchParams;
-  const rocketA = searchParams?.rocketA || "";
-  const rocketB = searchParams?.rocketB || "";
+  const raceId = searchParams?.id || "";
 
-  return (
-    <div>
-      {rocketA} VS {rocketB}
-    </div>
-  );
+  return <div>Race Id : {raceId}</div>;
 };
 
 export default Race;

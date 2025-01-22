@@ -1,15 +1,14 @@
+import { useRocketSelection } from "@/app/contexts/rocketContext";
 import { Rocket } from "@/app/domain/rocket";
 import Image from "next/image";
 
-const RocketButton = ({
-  rocket,
-  selectOrDeselectRocket,
-  isSelected,
-}: {
+type RocketButtonProps = {
   rocket: Rocket;
-  selectOrDeselectRocket: (selectedRocket: Rocket) => void;
-  isSelected: boolean;
-}) => {
+};
+
+const RocketButton = ({ rocket }: RocketButtonProps) => {
+  const { selectedRockets, selectOrDeselectRocket } = useRocketSelection();
+  const isSelected = selectedRockets.some((r) => r.id === rocket.id);
   return (
     <button
       className={`p-6 rounded-full border-4  hover:shadow-xl ${

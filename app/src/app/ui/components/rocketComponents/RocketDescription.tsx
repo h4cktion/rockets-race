@@ -1,3 +1,4 @@
+import { useRocketSelection } from "@/app/contexts/rocketContext";
 import { Rocket } from "@/app/domain/rocket";
 
 const fillWithPlaceholders = (rockets: Rocket[], count: number): Rocket[] => {
@@ -13,8 +14,9 @@ const fillWithPlaceholders = (rockets: Rocket[], count: number): Rocket[] => {
   return filledRockets;
 };
 
-const RocketDescription = ({ rockets }: { rockets: Rocket[] }) => {
-  const filledRockets = fillWithPlaceholders(rockets, 2);
+const RocketDescription = () => {
+  const { selectedRockets } = useRocketSelection();
+  const filledRockets = fillWithPlaceholders(selectedRockets, 2);
 
   return (
     <div className="flex gap-4">
