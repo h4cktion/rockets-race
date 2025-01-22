@@ -1,4 +1,3 @@
-// src/app/services/getRockets.ts
 import { Rocket } from "@/app/domain/rocket";
 import { ApolloRocketRepository } from "@/app/infra/appoloRocket.repository";
 import { initializeApollo } from "@/app/infra/graphql/apolloClient";

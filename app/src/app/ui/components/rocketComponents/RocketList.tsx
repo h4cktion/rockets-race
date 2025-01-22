@@ -4,10 +4,16 @@ import { useState } from "react";
 import RocketButton from "./RocketButton";
 import RocketDescription from "./RocketDescription";
 import StartButton from "./StartButton";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
-const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
-  const router = useRouter();
+const RocketList = ({
+  rockets,
+  startRace,
+}: {
+  rockets: Rocket[];
+  startRace: (rocketId1: string, rocketId2: string) => void;
+}) => {
+  // const router = useRouter();
   const [selectedRockets, setSelectedRockets] = useState<Rocket[]>([]);
 
   const selectOrDeselectRocket = (rocket: Rocket) => {
@@ -21,13 +27,14 @@ const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
     }
   };
 
-  const startTheRace = () => {
-    const queryString = new URLSearchParams({
-      rocketA: selectedRockets[0].id,
-      rocketB: selectedRockets[1].id,
-    }).toString();
-    router.push(`/race?${queryString}`);
-  };
+  // const startTheRace = () => {
+
+  //   const queryString = new URLSearchParams({
+  //     rocketA: selectedRockets[0].id,
+  //     rocketB: selectedRockets[1].id,
+  //   }).toString();
+  //   router.push(`/race?${queryString}`);
+  // };
 
   return (
     <div className="w-full flex justify-center flex-col items-center gap-8">
@@ -45,7 +52,7 @@ const RocketList = ({ rockets }: { rockets: Rocket[] }) => {
         ))}
       </ul>
       <RocketDescription rockets={selectedRockets} />
-      <StartButton rockets={selectedRockets} startTheRace={startTheRace} />
+      <StartButton rockets={selectedRockets} startTheRace={startRace} />
     </div>
   );
 };

@@ -27,21 +27,20 @@ export class ApolloRocketRepository implements RocketRepository {
 
   async startRace(rocket1: string, rocket2: string): Promise<Race> {
     const MUTATION = gql`
-      mutation StartRace($rocket1: ID!, $rocket2: ID!) {
+      mutation startRace($rocket1: ID!, $rocket2: ID!) {
         startRace(rocket1: $rocket1, rocket2: $rocket2) {
           id
-          rocketA {
+          rocket1 {
             id
-            name
+            progress
+            exploded
           }
-          rocketB {
+          rocket2 {
             id
-            name
+            progress
+            exploded
           }
-          winner {
-            id
-            name
-          }
+          winner
         }
       }
     `;

@@ -5,11 +5,11 @@ const StartButton = ({
   startTheRace,
 }: {
   rockets: Rocket[];
-  startTheRace: () => void;
+  startTheRace: (rocketId1: string, rocketId2: string) => void;
 }) => {
   return (
     <button
-      onClick={startTheRace}
+      onClick={() => startTheRace(rockets[0].id, rockets[1].id)}
       className={`p-4 w-40 h-40  uppercase 
     text-2xl font-bold rounded-full border-8 
     transition-colors duration-1000 ease-in-out
