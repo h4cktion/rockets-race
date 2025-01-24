@@ -5,7 +5,7 @@ import { fetchRace } from "../services/getRace";
 
 export async function startRace(rocketA: string, rocketB: string) {
   const race = await launchRockets(rocketA, rocketB);
-  redirect(`/race/${race!.id}`);
+  redirect(`/race/${race!.id}?rocketId1=${rocketA}&rocketId2=${rocketB}`);
 }
 
 export async function getRace(raceId: string) {
