@@ -1,4 +1,4 @@
-import { RocketProgress } from "./RocketProgress";
+import { RocketProgress } from "./rocketProgress";
 
 export type Race = {
   id: string;

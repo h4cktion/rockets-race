@@ -1,5 +1,6 @@
 // import { getRace } from "@/app/actions/rocket.actions";
-import RocketProgress from "@/app/ui/components/rocketComponents/RocketProgess";
+import RocketRace from "@/app/ui/components/rocketComponents/RocketRace";
+
 // import { notFound } from "next/navigation";
 
 type RaceProps = {
@@ -20,13 +21,7 @@ const Race = async (props: RaceProps) => {
 
   // if (!race) notFound();
 
-  return (
-    <div>
-      <h1>Rockets Progression</h1>
-      <RocketProgress raceId={id} rocketId={rocketId1} />
-      <RocketProgress raceId={id} rocketId={rocketId2} />
-    </div>
-  );
+  return <RocketRace raceId={id} rocketAId={rocketId1} rocketBId={rocketId2} />;
   // return <div>Race Id : {race.id}</div>;
 };
 

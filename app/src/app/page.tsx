@@ -7,7 +7,7 @@ const RocketsPage = async () => {
 
   return (
     <RocketProvider>
-      <div className="bg-futur-dark w-10/12 flex justify-center pt-4 m-auto h-screen">
+      <div className=" w-10/12 flex justify-center pt-4 m-auto h-screen">
         <RocketList rockets={rockets} />
       </div>
     </RocketProvider>

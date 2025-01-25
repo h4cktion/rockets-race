@@ -11,14 +11,14 @@ type RocketListProps = {
 const RocketList = ({ rockets }: RocketListProps) => {
   return (
     <div className="w-full flex justify-center flex-col items-center gap-8">
-      <h1 className=" font-bold uppercase text-futur-blue">
-        Sélectionner deux fusées pour lancer la course
+      <h1 className="text-center text-md md:text-2xl font-bold uppercase text-white">
+        Sélectionnez deux fusées pour lancer la course
       </h1>
-      <ul className="flex gap-4">
+      <div className="flex flex-col md:flex-row w-full justify-center gap-4">
         {rockets.map((rocket) => (
           <RocketButton key={rocket.id} rocket={rocket} />
         ))}
-      </ul>
+      </div>
       <RocketDescription />
       <StartButton />
     </div>

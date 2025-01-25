@@ -8,6 +8,7 @@ const StartButton = () => {
   return (
     <button
       onClick={() => startRace(selectedRockets[0].id, selectedRockets[1].id)}
+      disabled={isDisabled}
       className={`p-4 w-40 h-40  uppercase 
     text-2xl font-bold rounded-full border-8 
     transition-colors duration-1000 ease-in-out

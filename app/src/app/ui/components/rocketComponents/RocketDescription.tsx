@@ -6,7 +6,7 @@ const fillWithPlaceholders = (rockets: Rocket[], count: number): Rocket[] => {
   while (filledRockets.length < count) {
     filledRockets.push({
       id: `placeholder-${filledRockets.length}`,
-      name: "Sélectionner une fusée",
+      name: "Sélectionnez une fusée",
       description: "",
       image: "",
     });
@@ -19,11 +19,11 @@ const RocketDescription = () => {
   const filledRockets = fillWithPlaceholders(selectedRockets, 2);
 
   return (
-    <div className="flex gap-4">
+    <div className="hidden md:flex flex-col md:flex-row gap-4">
       {filledRockets.map((rocket) => (
         <div
           key={rocket.id}
-          className="w-[300px] h-[128px] font-bold mt-4 border-4 rounded-md border-futur-blue bg-futur-dark text-futur-blue flex flex-col p-6"
+          className="w-[300px] h-[128px] font-bold mt-4 border-4 rounded-md border-[#50394c]  text-white flex flex-col p-6"
         >
           <p className="text-center text-xl pb-2">{rocket.name}</p>
           <p className="text-center">{rocket.description}</p>
